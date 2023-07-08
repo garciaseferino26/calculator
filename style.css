@@ -28,11 +28,52 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 40rem;
-    height: 40rem;
+    height: 60rem;
     margin-left: auto;
     margin-right: auto;
     border-radius: 25px;
+}
+
+.clearButton {
+    background-color: orange;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 524px;
+    height: 64px;
+    border-radius: 25px;
+    font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
+.displayBox {
+    border: black solid 2px;
+    background-color: white;
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    width: 520px;
+    border-radius: 25px;
+    margin-bottom: 2px;
+}
+
+.equals {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prints {
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    padding-right: 10px;
 }
 
 .buttons {
@@ -49,4 +90,16 @@ body {
 .buttonItem {
     border-radius: 25px;
     margin: 2px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
+
+.display{
+    position: relative;
+    width: 100%;
+    height: 25%;
+    background-color: white;
+    border-radius: 7px;
+    overflow: hidden;
 }
