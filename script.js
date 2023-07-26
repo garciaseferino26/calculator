@@ -5,6 +5,7 @@ const numbers = ["7", "8", "9", ".", "4", "5", "6", "1", "2", "3", "0"]
 const operators = ["x", "÷", "-", "+"]
 let count = 0;
 
+// create inital look of the calculator
 for (let i=0; i<4; i++) {
     const buttonRow = document.createElement('div');
     buttonRow.classList.add('buttonRow')
@@ -22,44 +23,50 @@ for (let i=0; i<4; i++) {
     buttons.appendChild(buttonRow);
 }
 
+// initialize total variable and operator to be used variable
 let total = "placeholder";
 let oper2Use = "";
-console.log(total, "at start");
+// console.log(total, "at start");
 
+// select all buttons
 const eachButton = document.querySelectorAll("button").forEach(item => {
+    // give each button a function when clicked
     item.addEventListener('click', function() {
-        // select both displays 
-        const typing = document.querySelector(".prints");
+        // these two variables will hold both displays, one where the running sum shows up and the other where current user input is being shown
         const equals = document.querySelector(".equals");
+        // console.log(equals);
+        const typing = document.querySelector(".prints");
+        // console.log(typing);
 
-        console.log("this is curr total = ", total, "key clicked was ", item.textContent);
+        // console.log("this is curr total = ", "|->", total, "<-|", " key clicked was ", item.textContent);
 
         if (item.textContent === "Clear") {
             typing.textContent = "";
             equals.textContent = "";
-            total = "placeholder"
+            total = "placeholder";
+            oper2Use = "";
         }
 
         if (item.textContent === "=") {
-            console.log("current num 1 is ", total);
-            console.log("current operator is ", oper2Use);
-            console.log("current num 2 is ", parseFloat(typing.textContent));
+            // console.log("current first num is ", total);
+            // console.log("current operator is ", oper2Use);
+            // console.log("current second num is ", parseFloat(typing.textContent));
             total = operator(total, oper2Use, parseFloat(typing.textContent));
             equals.textContent = (total);
             typing.textContent = "";
-        }
+            
 
         // if the button text content is a number or period add it to the display string
         // enters only when first number isn't saved 
         if (total === "placeholder" && !operators.includes(item.textContent)) {
-            console.log("entered the loop where total is a string")
+            // console.log("entered the loop where total is a string")
             if (numbers.includes(item.textContent)) {
                 typing.textContent += item.textContent;
             };
         } 
         // enters this loop if total is holding and int and click is a number
         if (!isNaN(total) && numbers.includes(item.textContent)) {
-            console.log("only enters this if total is an int and whats being clicked is a number")
+            // console.log("only enters this if total is an int and whats being clicked is a number")
             if (operators.includes(typing.textContent[0])) {
                 typing.textContent = "";
             }
@@ -78,7 +85,7 @@ const eachButton = document.querySelectorAll("button").forEach(item => {
                 typing.textContent = "";
                 typing.textContent = item.textContent;
                 oper2Use = item.textContent;
-                console.log(oper2Use);
+                // console.log(oper2Use);
             } else {
             
                 // means this is the first number
@@ -87,25 +94,25 @@ const eachButton = document.querySelectorAll("button").forEach(item => {
                     // total holds the number after parsing the string in display 
                                 
                     oper2Use += item.textContent;
-                    console.log("this operator has been entered", oper2Use);
-                    console.log("we enterd the loop to set the  first num");
+                    // console.log("this operator has been entered", oper2Use);
+                    // console.log("we enterd the loop to set the  first num");
 
                     total = parseFloat(typing.textContent);
-                    console.log("the new total should be =", total, "if we set it right");
+                    // console.log("the new total should be =", total, "if we set it right");
                     equals.textContent = parseFloat(total);
-                    console.log("we changed the equals display to curr total =>", total);
+                    // console.log("we changed the equals display to curr total =>", total);
 
                 } else {
-                    console.log("we've enter the loop where operator has been clicked and total isn't a str")
-                    console.log("current num 1 is ", total);
-                    console.log("current operator is ", oper2Use);
-                    console.log("current num 2 is ", parseFloat(typing.textContent));
+                    // console.log("we've enter the loop where operator has been clicked and total isn't a str")
+                    // console.log("current num 1 is ", total);
+                    // console.log("current operator is ", oper2Use);
+                    // console.log("current num 2 is ", parseFloat(typing.textContent));
 
                     total = operator(total, oper2Use, parseFloat(typing.textContent));
-                    console.log(total);
+                    // console.log(total);
                     equals.textContent = (total);
                     oper2Use = item.textContent;
-                    console.log("operator to use next time", oper2Use);
+                    // console.log("operator to use next time", oper2Use);
                 }
                 typing.textContent = "";
                 typing.textContent = item.textContent;
